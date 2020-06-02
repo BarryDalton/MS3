@@ -2,7 +2,7 @@
 
 
 
-# Milestone project 3 - My Cookbook "working title"
+# Milestone project 3 - Yummy Cookbook
 
 One or two paragraphs providing an overview of your project.
 
