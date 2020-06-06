@@ -131,7 +131,8 @@ console.log(calcAverageRating(ratings));
 
 ### Acknowledgements
 
-- I received inspiration for this project from X
+- I received inspiration for this project from https://www.bbcgoodfood.com/ 
+    
 
 
 

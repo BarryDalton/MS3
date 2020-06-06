@@ -2,8 +2,8 @@ import pymongo
 import os
 
 MONGODB_URI = os.getenv("MONGO_URI")
-DBS_NAME = "mytestdb"
-COLLECTION_NAME = "myFirstMDB"
+DBS_NAME = "MyCookbookDB"
+COLLECTION_NAME = "MyCookbookDB.Recipes"
 
 def mongo_connect(url):
     try:
