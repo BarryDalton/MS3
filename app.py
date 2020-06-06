@@ -14,7 +14,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 app = Flask(__name__)
-app.config['MONGO_DBNAME'] = 'onlineCookbook'
+app.config['MONGO_DBNAME'] = 'mycookbook'
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI', 'mongodb://localhost')
 
 app.secret_key = os.getenv('SECRET', 'randomstring123')
