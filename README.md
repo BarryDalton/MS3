@@ -80,6 +80,55 @@ In addition, if it is not obvious, you should also describe how to run your code
 ### Media
 - The photos used in this site were obtained from ...
 
+### 5 Star Rating Formula 
+https://stackoverflow.com/questions/10196579/algorithm-used-to-calculate-5-star-ratings
+Javascript 
+
+calcAverageRating(ratings) {
+
+  let totalWeight = 0;
+  let totalReviews = 0;
+
+  ratings.forEach((rating) => {
+
+    const weightMultipliedByNumber = rating.weight * rating.count;
+    totalWeight += weightMultipliedByNumber;
+    totalReviews += rating.count;
+  });
+
+  const averageRating = totalWeight / totalReviews;
+
+  return averageRating.toFixed(2);
+}
+
+
+const ratings = [
+  {
+    weight: 5,
+    count: 252
+  },
+  {
+    weight: 4,
+    count: 124
+  },
+  {
+    weight: 3,
+    count: 40
+  },
+  {
+    weight: 2,
+    count: 29
+  },
+  {
+    weight: 1,
+    count: 33
+  }
+];
+
+console.log(calcAverageRating(ratings));
+
+
+
 ### Acknowledgements
 
 - I received inspiration for this project from X
