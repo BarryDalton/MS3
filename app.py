@@ -25,9 +25,9 @@ mongo = PyMongo(app)
 # Variables                                                                                                #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 recipes = mongo.db.recipes
-recipeCategory = mongo.db.recipeCategory
+recipeCategory = mongo.db.category
 allergens = mongo.db.allergens
-skillLevel = mongo.db.skillLevel
+skillLevel = mongo.db.difficulty
 userDB = mongo.db.users
 
 
