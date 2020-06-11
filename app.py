@@ -141,7 +141,7 @@ def logout():
     featured_recipes = recipes.find({'featured_recipe': 'on'})
     count_featured_recipes = featured_recipes.count()     
     return render_template('index.html', recipes=recipes.find().sort('date_time',pymongo.DESCENDING), 
-    recipeCategory=recipeCategory.find(),tags = tags, page=1, page_title='Logout of Yummy Cookbook,
+    recipeCategory=recipeCategory.find(),tags = tags, page=1, page_title='Logout,
     count_featured_recipes=count_featured_recipes)  
     
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
