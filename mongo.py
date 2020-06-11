@@ -1,5 +1,6 @@
 import pymongo
 import os
+import env.py
 
 MONGODB_URI = os.getenv("MONGO_URI")
 DBS_NAME = "MyCookbookDB"
