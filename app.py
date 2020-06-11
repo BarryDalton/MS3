@@ -44,7 +44,7 @@ def index():
     featured_recipes = recipes.find({'featured_recipe': 'on'})
     count_featured_recipes = featured_recipes.count()    
     return render_template('index.html', recipes=recipes.find().sort('date_time',pymongo.DESCENDING), 
-    recipeCategory=recipeCategory.find(), page=1, tags=tags, page_title='Lemon & Ginger, Recipe Finder', count_featured_recipes=count_featured_recipes)
+    recipeCategory=recipeCategory.find(), page=1, tags=tags, page_title='Yummy Cookbook', count_featured_recipes=count_featured_recipes)
 
 @app.route('/get_recipes')
 def get_recipes():
@@ -57,7 +57,7 @@ def get_recipes():
 @app.route('/register')
 def register():
     return render_template('register.html', recipes=recipes.find(), 
-        recipeCategory=recipeCategory.find(), page=1, page_title='Register at Lemon & Ginger, Recipe Finder')
+        recipeCategory=recipeCategory.find(), page=1, page_title='Register at Yummy Cookbook')
 
 
 @app.route('/signup', methods=['POST'])
@@ -78,7 +78,7 @@ def signup():
             'recipes_rated':[]
         })
         session['logged_in'] = True
-        flash('Welcome to Lemon & Ginger ' + author_name)
+        flash('Welcome to Yummy Cookbook ' + author_name)
         return signin()
     else:
         session['logged_in'] = False
@@ -95,10 +95,10 @@ def signin():
     count_featured_recipes = featured_recipes.count() 
     if not session.get('logged_in'):
         return render_template('login.html', recipeCategory=recipeCategory.find(), tags=tags, page=1, 
-        page_title='Login at Lemon & Ginger Recipe Finder', count_featured_recipes=count_featured_recipes)
+        page_title='Login at Yummy Cookbook', count_featured_recipes=count_featured_recipes)
     else:
         return render_template('index.html', recipes=recipes.find().sort('date_time',pymongo.DESCENDING), 
-        recipeCategory=recipeCategory.find(), tags=tags, page=1, page_title='Login at Lemon & Ginger, Recipe Finder', 
+        recipeCategory=recipeCategory.find(), tags=tags, page=1, page_title='Login at Yummy Cookbook', 
         count_featured_recipes=count_featured_recipes)
 
 
@@ -129,7 +129,7 @@ def login():
         flash('Welcome ' + user['author_name'].capitalize())
         return render_template('index.html', recipes=recipes.find().sort('date_time',pymongo.DESCENDING), 
         recipeCategory=recipeCategory.find(), author=user['author_name'], tags=tags, page=1, 
-        page_title='Welcome to Lemon & Ginger, Recipe Finder', count_featured_recipes=count_featured_recipes)        
+        page_title='Welcome to Yummy Cookbook', count_featured_recipes=count_featured_recipes)        
 
     
 @app.route('/logout')
@@ -141,7 +141,7 @@ def logout():
     featured_recipes = recipes.find({'featured_recipe': 'on'})
     count_featured_recipes = featured_recipes.count()     
     return render_template('index.html', recipes=recipes.find().sort('date_time',pymongo.DESCENDING), 
-    recipeCategory=recipeCategory.find(),tags = tags, page=1, page_title='Logout of Lemon & Ginger, Recipe Finder',
+    recipeCategory=recipeCategory.find(),tags = tags, page=1, page_title='Logout of Yummy Cookbook,
     count_featured_recipes=count_featured_recipes)  
     
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -166,7 +166,7 @@ def all_recipes(page):
    
     return render_template('all_recipes.html',
     recipes=recipe_pages, recipeCategory=recipeCategory.find(),count_recipes=count_recipes, total_no_of_pages=total_no_of_pages, 
-    page=page, page_title='All Recipes at Lemon & Ginger, Recipe Finder', tags=tags)
+    page=page, page_title='All Recipes at Yummy Cookbook', tags=tags)
 
     
 
@@ -193,7 +193,7 @@ def browse_recipes(recipe_category_name, page):
    
     return render_template('browse_recipes.html',
     recipes=recipe_pages, recipeCategory=recipeCategory.find(),count_recipes=count_recipes, total_no_of_pages=total_no_of_pages, 
-    page=page, recipe_category_name=recipe_category_name, page_title='Lemon & Ginger, Recipe Finder', tags=tags)
+    page=page, recipe_category_name=recipe_category_name, page_title='Yummy Cookbook, tags=tags)
     
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Add Recipes                                                                                              #
@@ -204,7 +204,7 @@ def add_recipe():
     username=session.get('username')
     return render_template('add_recipe.html', recipes=recipes.find(), recipeCategory=recipeCategory.find(), 
             skillLevel=skillLevel.find(), allergens=allergens.find(), userDB = userDB.find(), page=1, 
-            page_title='Add a recipe to Lemon & Ginger, Recipe Finder')
+            page_title='Add a recipe to Yummy Cookbook)
 
   
 @app.route('/insert_recipe', methods=['POST'])
@@ -238,7 +238,7 @@ def insert_recipe():
             'recipe_tags': recipe_tags_split
         }   
     recipes.insert_one(complete_recipe)
-    return redirect(url_for('my_recipes',page=1, page_title='My Recipes at Lemon & Ginger, Recipe Finder'))
+    return redirect(url_for('my_recipes',page=1, page_title='My Recipes at Yummy Cookbook))
         
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Edit Recipes                                                                                             #
@@ -248,7 +248,7 @@ def insert_recipe():
 def edit_recipe(recipe_id):
     return render_template('edit_recipe.html', recipeCategory=recipeCategory.find(), 
             allergens=allergens.find(), skillLevel=skillLevel.find(), page=1, 
-            page_title='Edit Recipe on Lemon & Ginger, Recipe Finder',
+            page_title='Edit Recipe on Yummy Cookbook,
             recipes=recipes.find_one({'_id': ObjectId(recipe_id)}))
             
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
@@ -273,7 +273,7 @@ def update_recipe(recipe_id):
             'recipe_tags': recipe_tags_split
             }
         })    
-    return redirect(url_for('my_recipes',page=1, page_title='My Recipes at Lemon & Ginger, Recipe Finder'))       
+    return redirect(url_for('my_recipes',page=1, page_title='My Recipes at Yummy Cookbook))       
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Delete Recipes                                                                                           #
@@ -283,7 +283,7 @@ def update_recipe(recipe_id):
 @app.route('/delete_recipe/<recipe_id>', methods=['POST'])
 def delete_recipe(recipe_id):
     recipes.remove({'_id': ObjectId(recipe_id)})
-    return redirect(url_for('my_recipes',page=1, page_title='My Recipes at Lemon & Ginger, Recipe Finder'))
+    return redirect(url_for('my_recipes',page=1, page_title='My Recipes at Yummy Cookbook))
   
 
 
@@ -309,7 +309,7 @@ def my_recipes(page):
     return render_template('my_recipes.html',
     recipes=recipe_pages.sort('date_time',pymongo.DESCENDING), count_recipes=count_recipes, 
     total_no_of_pages=total_no_of_pages, page=page, author_name = username,
-    page_title='My Recipes at Lemon & Ginger, Recipe Finder', recipeCategory=recipeCategory.find())
+    page_title='My Recipes at Yummy Cookbook, recipeCategory=recipeCategory.find())
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Individual Recipe Page                                                                                   #
@@ -327,7 +327,7 @@ def recipe_page(recipe_id):
         recipe_rated_by_author = user['recipes_rated']
         return render_template('recipe.html', recipe=recipes.find_one({'_id': ObjectId(recipe_id)}), 
         recipeCategory=recipeCategory.find(), recipe_id = recipe_id, recipe_rated_by_author=recipe_rated_by_author, 
-        user=user, page=1, page_title='Recipe at Lemon & Ginger, Recipe Finder')
+        user=user, page=1, page_title='Recipe at Yummy Cookbook)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Searching Keywords                                                                                       #
@@ -357,7 +357,7 @@ def search_keyword(keyword, page):
     return render_template('search_by_keyword.html', keyword=keyword, 
         search_results = recipe_pages.sort('date_time',pymongo.DESCENDING), 
         recipeCategory=recipeCategory.find(), count_recipes=count_recipes, 
-        total_no_of_pages=total_no_of_pages, page=page, page_title='Search Results, Lemon & Ginger, Recipe Finder')
+        total_no_of_pages=total_no_of_pages, page=page, page_title='Search Results, Yummy Cookbook)
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -387,7 +387,7 @@ def search_tag(tag, page):
     return render_template('search_by_tag.html', tag=tag, 
         search_results = recipe_pages.sort('date_time',pymongo.DESCENDING), 
         recipeCategory=recipeCategory.find(), count_recipes=count_recipes, 
-        total_no_of_pages=total_no_of_pages, page=page, page_title='Tag Results, Lemon & Ginger, Recipe Finder')     
+        total_no_of_pages=total_no_of_pages, page=page, page_title='Tag Results, Yummy Cookbook)     
         
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Ratings                                                                                                  #
@@ -421,7 +421,7 @@ def recipe_rating(recipe_id):
     userDB.update({"username": username},
                 {'$addToSet': 
                 {'recipes_rated' : recipe_id}}) 
-    return redirect(url_for('recipe_page', recipe_id = recipe_id, page_title='Recipe at Lemon & Ginger, Recipe Finder'))
+    return redirect(url_for('recipe_page', recipe_id = recipe_id, page_title='Recipe at Yummy Cookbook))
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Error Pages                                                                                              #
@@ -429,12 +429,12 @@ def recipe_rating(recipe_id):
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template('404.html',recipeCategory=recipeCategory.find(), page=1, page_title='404 Error Page, Lemon & Ginger'), 404
+    return render_template('404.html',recipeCategory=recipeCategory.find(), page=1, page_title='404 Error Page, Yummy Cookbook'), 404
 
 
 @app.errorhandler(500)
 def something_wrong(error):
-    return render_template('500.html',recipeCategory=recipeCategory.find(), page=1, page_title='500 Error Page, Lemon & Ginger'), 500
+    return render_template('500.html',recipeCategory=recipeCategory.find(), page=1, page_title='500 Error Page, Yummy Cookbook'), 500
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
