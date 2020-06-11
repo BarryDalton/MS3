@@ -35,7 +35,7 @@ userDB = mongo.db.users
 # Homepage  - Load all recipes and load recipes to slider                                                  #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 @app.route('/')
-@app.route('/index/1')
+@app.route('/index')
 def index():
     tags = recipes.distinct("recipe_tags")
     random.shuffle(tags)
@@ -164,7 +164,7 @@ def all_recipes(page):
                     ("_id", pymongo.ASCENDING)]).skip(offset).limit(limit)
     total_no_of_pages = int(math.ceil(count_recipes/limit))
    
-    return render_template('all_recipes.html',
+    return render_template('all_recipe.html',
     recipes=recipe_pages, recipeCategory=recipeCategory.find(),count_recipes=count_recipes, total_no_of_pages=total_no_of_pages, 
     page=page, page_title='All Recipes at Yummy Cookbook', tags=tags)
 
@@ -176,7 +176,7 @@ def all_recipes(page):
     
 @app.route('/browse_recipes/<recipe_category_name>/<page>', methods=['GET'])
 def browse_recipes(recipe_category_name, page):
-    tags = recipes.distinct("recipe_tags")
+    tags = recipes.distinct("tags")
     random.shuffle(tags)    
     #Count the number of recipes in the Database
     all_recipes = recipes.find({'recipe_category_name': recipe_category_name}).sort([('date_time', pymongo.DESCENDING), 
@@ -191,7 +191,7 @@ def browse_recipes(recipe_category_name, page):
                     ("_id", pymongo.ASCENDING)]).skip(offset).limit(limit)
     total_no_of_pages = int(math.ceil(count_recipes/limit))
    
-    return render_template('browse_recipes.html',
+    return render_template('browse_recipe.html',
     recipes=recipe_pages, recipeCategory=recipeCategory.find(),count_recipes=count_recipes, total_no_of_pages=total_no_of_pages, 
     page=page, recipe_category_name=recipe_category_name, page_title='Yummy Cookbook, tags=tags)
     
