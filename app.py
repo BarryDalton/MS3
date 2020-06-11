@@ -14,7 +14,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 app = Flask(__name__)
-app.config['MONGO_DBNAME'] = 'mycookbook'
+app.config['MONGO_DBNAME'] = 'mycookbookdb'
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI', 'mongodb://localhost')
 
 app.secret_key = os.getenv('SECRET', 'randomstring123')
@@ -27,7 +27,7 @@ mongo = PyMongo(app)
 recipes = mongo.db.recipes
 recipeCategory = mongo.db.category
 allergens = mongo.db.allergens
-skillLevel = mongo.db.difficulty
+difficulty = mongo.db.difficulty
 userDB = mongo.db.users
 
 
