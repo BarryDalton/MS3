@@ -15,11 +15,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color:#98a959;;
+  color:#FA7705;;
 }
 
 h3, h4, h5, h6 {
-  color:#98a959;
+  color:#FA7705;
 }
 
 h6 {
@@ -61,9 +61,9 @@ a:hover {
 }
 
 input.valid:not([type]), input.valid:not([type]):focus, input[type="text"].valid:not(.browser-default), input[type="text"].valid:not(.browser-default):focus, input[type="password"].valid:not(.browser-default), input[type="password"].valid:not(.browser-default):focus, input[type="email"].valid:not(.browser-default), input[type="email"].valid:not(.browser-default):focus, input[type="url"].valid:not(.browser-default), input[type="url"].valid:not(.browser-default):focus, input[type="time"].valid:not(.browser-default), input[type="time"].valid:not(.browser-default):focus, input[type="date"].valid:not(.browser-default), input[type="date"].valid:not(.browser-default):focus, input[type="datetime"].valid:not(.browser-default), input[type="datetime"].valid:not(.browser-default):focus, input[type="datetime-local"].valid:not(.browser-default), input[type="datetime-local"].valid:not(.browser-default):focus, input[type="tel"].valid:not(.browser-default), input[type="tel"].valid:not(.browser-default):focus, input[type="number"].valid:not(.browser-default), input[type="number"].valid:not(.browser-default):focus, input[type="search"].valid:not(.browser-default), input[type="search"].valid:not(.browser-default):focus, textarea.materialize-textarea.valid, textarea.materialize-textarea.valid:focus, .select-wrapper.valid > input.select-dropdown {
-    border-bottom: 1px solid #98a959;
-    -webkit-box-shadow: 0 1px 0 0 #98a959;
-    box-shadow: 0 1px 0 0 #98a959;
+    border-bottom: 1px solid #FA7705;
+    -webkit-box-shadow: 0 1px 0 0 #FA7705;
+    box-shadow: 0 1px 0 0 #FA7705;
 }
 
 .add-recipe-name, .add-recipe-prep, .add-recipe-ingredients,.add-recipe-tags {
@@ -79,7 +79,7 @@ input.valid:not([type]), input.valid:not([type]):focus, input[type="text"].valid
 }
 
 .switch label input[type="checkbox"]:checked + .lever::after {
-    background-color: #f3d63d;
+    background-color: #3D5AF3;
 }
 
 .switch label input[type="checkbox"]:checked + .lever {
@@ -87,11 +87,11 @@ input.valid:not([type]), input.valid:not([type]):focus, input[type="text"].valid
 }
 
 .add-recipe-button {
-  background-color: #98a959;
+  background-color: #FA7705;
 }
 
 .add-recipe-button:hover, .add-recipe-button:hover {
-    background-color: #f3d63d;
+    background-color: #3D5AF3;
 }
 
 .delete_recipe {
@@ -110,11 +110,11 @@ input.valid:not([type]), input.valid:not([type]):focus, input[type="text"].valid
     font-size: 14px;
 }
 .card-action {
-  background: #98a959 !important;
+  background: #FA7705 !important;
 }
 
 .card-action:hover {
-  background: #f3d63d !important;
+  background: #3D5AF3 !important;
 }
 
 .card-action a {
@@ -127,10 +127,10 @@ input.valid:not([type]), input.valid:not([type]):focus, input[type="text"].valid
 
 /* Homepage All Recipes Button */
 .all-recipes {
-  background-color:#98a959;
+  background-color:#FA7705;
 }
 .all-recipes:hover, .all-recipes:focus {
-  background-color:#f3d63d;
+  background-color:#3D5AF3;
   color:#ffffff;
 }
 
@@ -141,7 +141,7 @@ input.valid:not([type]), input.valid:not([type]):focus, input[type="text"].valid
 }
 
 .homepage-categories a {
-  color:#f3d63d;
+  color:#3D5AF3;
 }
 
 /*Right Line Headers */
@@ -158,7 +158,7 @@ input.valid:not([type]), input.valid:not([type]):focus, input[type="text"].valid
   content: "";
   position: absolute;
   height: 5px;
-  border-bottom: 1px solid #98a959;
+  border-bottom: 1px solid #FA7705;
   top: 0;
   width: 80%;
 }
@@ -183,7 +183,7 @@ input.valid:not([type]), input.valid:not([type]):focus, input[type="text"].valid
   content: "";
   position: absolute;
   height: 5px;
-  border-top: 2px solid #98a959;
+  border-top: 2px solid #FA7705;
   top: 0;
   width: 30px;
 }
@@ -255,7 +255,7 @@ nav .button-collapse {
 /*Header Styles */
 .flash-message {
   margin-top:20px;
-  color: #98a959;
+  color: #FA7705;
   font-weight: 700;
 }
 
@@ -351,7 +351,7 @@ nav .button-collapse {
   text-align: center;
   line-height: 42px;
   border-width: 0;
-  background-color: #98a959;
+  background-color: #FA7705;
   -webkit-border-radius: 0 2px 2px 0;
   -moz-border-radius: 0 2px 2px 0;
   border-radius: 0 2px 2px 0;
@@ -383,7 +383,7 @@ nav .button-collapse {
 }
 
 #add_ingredient.btn, #add_method_step.btn {
-  background-color: #f3d63d;
+  background-color: #3D5AF3;
 }
 
 #remove_ingredient.btn-floating, #remove_method_step.btn-floating {
@@ -416,7 +416,7 @@ nav .button-collapse {
 }
 
 .login-screen {
-  background-color: #98a959;
+  background-color: #FA7705;
   padding: 20px;
   border-radius: 5px
 }
@@ -458,7 +458,7 @@ nav .button-collapse {
  
 .login .btn {
   border: 2px solid transparent;
-  background: #f3d63d;
+  background: #3D5AF3;
   color: #ffffff;
   font-size: 16px;
   font-weight: 800;
@@ -492,7 +492,7 @@ nav .button-collapse {
 }
 
 .login .register a {
-  color:#f3d63d;
+  color:#3D5AF3;
   font-weight:800;
   letter-spacing: 1px;
 }
@@ -522,7 +522,7 @@ nav .button-collapse {
 
 .rate.btn {
   border: 1px solid transparent;
-  background: #f3d63d;
+  background: #3D5AF3;
   color: #ffffff;
   font-size: 14px;
   font-weight: 800;
@@ -552,7 +552,7 @@ nav .button-collapse {
 }
 
 .recipe-details .material-icons {
-  color:#98a959;
+  color:#FA7705;
 }
 
 /* Sharing Buttons */
