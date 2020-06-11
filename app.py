@@ -206,7 +206,9 @@ def add_recipe():
             skillLevel=skillLevel.find(), allergens=allergens.find(), userDB = userDB.find(), page=1, 
             page_title='Add a recipe to Yummy Cookbook)
 
-  
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Add Recipes Contains predefined lists                                                                    #
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#   
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     username=session.get('username')
