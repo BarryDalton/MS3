@@ -141,7 +141,7 @@ def logout():
     featured_recipes = recipes.find({'featured_recipe': 'on'})
     count_featured_recipes = featured_recipes.count()     
     return render_template('index.html', recipes=recipes.find().sort('date_time',pymongo.DESCENDING), 
-    recipeCategory=recipeCategory.find(),tags = tags, page=1, page_title='Logout,
+    recipeCategory=recipeCategory.find(),tags = tags, page=1, page_title='Logout',
     count_featured_recipes=count_featured_recipes)  
     
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -193,7 +193,7 @@ def browse_recipes(recipe_category_name, page):
    
     return render_template('browse_recipe.html',
     recipes=recipe_pages, recipeCategory=recipeCategory.find(),count_recipes=count_recipes, total_no_of_pages=total_no_of_pages, 
-    page=page, recipe_category_name=recipe_category_name, page_title='Yummy Cookbook, tags=tags)
+    page=page, recipe_category_name=recipe_category_name, page_title='Yummy Cookbook', tags=tags)
     
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Add Recipes                                                                                              #
@@ -204,7 +204,7 @@ def add_recipe():
     username=session.get('username')
     return render_template('add_recipe.html', recipes=recipes.find(), recipeCategory=recipeCategory.find(), 
             skillLevel=skillLevel.find(), allergens=allergens.find(), userDB = userDB.find(), page=1, 
-            page_title='Add a recipe to Yummy Cookbook)
+            page_title='Add a recipe to Yummy Cookbook')
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Add Recipes Contains predefined lists                                                                    #
@@ -240,7 +240,7 @@ def insert_recipe():
             'recipe_tags': recipe_tags_split
         }   
     recipes.insert_one(complete_recipe)
-    return redirect(url_for('my_recipes',page=1, page_title='My Recipes at Yummy Cookbook))
+    return redirect(url_for('my_recipes',page=1, page_title='My Recipes at Yummy Cookbook'))
         
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Edit Recipes                                                                                             #
@@ -250,7 +250,7 @@ def insert_recipe():
 def edit_recipe(recipe_id):
     return render_template('edit_recipe.html', recipeCategory=recipeCategory.find(), 
             allergens=allergens.find(), skillLevel=skillLevel.find(), page=1, 
-            page_title='Edit Recipe on Yummy Cookbook,
+            page_title='Edit Recipe on Yummy Cookbook',
             recipes=recipes.find_one({'_id': ObjectId(recipe_id)}))
             
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
@@ -275,7 +275,7 @@ def update_recipe(recipe_id):
             'recipe_tags': recipe_tags_split
             }
         })    
-    return redirect(url_for('my_recipes',page=1, page_title='My Recipes at Yummy Cookbook))       
+    return redirect(url_for('my_recipes',page=1, page_title='My Recipes at Yummy Cookbook'))       
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Delete Recipes                                                                                           #
@@ -285,7 +285,7 @@ def update_recipe(recipe_id):
 @app.route('/delete_recipe/<recipe_id>', methods=['POST'])
 def delete_recipe(recipe_id):
     recipes.remove({'_id': ObjectId(recipe_id)})
-    return redirect(url_for('my_recipes',page=1, page_title='My Recipes at Yummy Cookbook))
+    return redirect(url_for('my_recipes',page=1, page_title='My Recipes at Yummy Cookbook'))
   
 
 
@@ -311,7 +311,7 @@ def my_recipes(page):
     return render_template('my_recipes.html',
     recipes=recipe_pages.sort('date_time',pymongo.DESCENDING), count_recipes=count_recipes, 
     total_no_of_pages=total_no_of_pages, page=page, author_name = username,
-    page_title='My Recipes at Yummy Cookbook, recipeCategory=recipeCategory.find())
+    page_title='My Recipes at Yummy Cookbook', recipeCategory=recipeCategory.find())
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Individual Recipe Page                                                                                   #
@@ -329,7 +329,7 @@ def recipe_page(recipe_id):
         recipe_rated_by_author = user['recipes_rated']
         return render_template('recipe.html', recipe=recipes.find_one({'_id': ObjectId(recipe_id)}), 
         recipeCategory=recipeCategory.find(), recipe_id = recipe_id, recipe_rated_by_author=recipe_rated_by_author, 
-        user=user, page=1, page_title='Recipe at Yummy Cookbook)
+        user=user, page=1, page_title='Recipe at Yummy Cookbook')
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Searching Keywords                                                                                       #
@@ -359,7 +359,7 @@ def search_keyword(keyword, page):
     return render_template('search_by_keyword.html', keyword=keyword, 
         search_results = recipe_pages.sort('date_time',pymongo.DESCENDING), 
         recipeCategory=recipeCategory.find(), count_recipes=count_recipes, 
-        total_no_of_pages=total_no_of_pages, page=page, page_title='Search Results, Yummy Cookbook)
+        total_no_of_pages=total_no_of_pages, page=page, page_title='Search Results, Yummy Cookbook')
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -389,7 +389,7 @@ def search_tag(tag, page):
     return render_template('search_by_tag.html', tag=tag, 
         search_results = recipe_pages.sort('date_time',pymongo.DESCENDING), 
         recipeCategory=recipeCategory.find(), count_recipes=count_recipes, 
-        total_no_of_pages=total_no_of_pages, page=page, page_title='Tag Results, Yummy Cookbook)     
+        total_no_of_pages=total_no_of_pages, page=page, page_title='Tag Results, Yummy Cookbook')     
         
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Ratings                                                                                                  #
@@ -423,7 +423,7 @@ def recipe_rating(recipe_id):
     userDB.update({"username": username},
                 {'$addToSet': 
                 {'recipes_rated' : recipe_id}}) 
-    return redirect(url_for('recipe_page', recipe_id = recipe_id, page_title='Recipe at Yummy Cookbook))
+    return redirect(url_for('recipe_page', recipe_id = recipe_id, page_title='Recipe at Yummy Cookbook'))
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Error Pages                                                                                              #
